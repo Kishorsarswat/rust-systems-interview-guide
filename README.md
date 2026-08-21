@@ -1,34 +1,78 @@
-# rust-systems-interview-guide
-A comprehensive, hands-on guide for cracking advanced Rust engineering interviews.
+# Rust Systems Interview Guide 🦀
 
-This repository is built for backend developers and systems engineers aiming for senior-level roles at high-performance tech companies. Rust interviews are rarely just about trivia; they test your muscle memory with the borrow checker, your grasp of lock contention, and your ability to design scalable async architectures. Whether you are transitioning from a strong C++ background or scaling high-throughput distributed systems, this guide bridges the gap between theoretical knowledge and compilable code.
+A comprehensive, hands-on guide for cracking advanced Rust systems and backend engineering interviews.
+
+This repository is built for backend developers, infrastructure engineers, and systems engineers aiming for senior-level roles at high-performance tech companies. Rust interviews test your muscle memory with the borrow checker, your grasp of lock contention, your understanding of memory layouts and FFI barriers, and your ability to design scalable async architectures.
+
+---
+
+## 📚 Table of Contents
+
+- [🧠 Theoretical Question Bank](./concepts/README.md)
+  - [01. Ownership, Borrowing & Lifetimes](./concepts/01-ownership-borrowing-lifetimes.md)
+  - [02. Smart Pointers & Interior Mutability](./concepts/02-smart-pointers-interior-mutability.md)
+  - [03. Concurrency & Locks](./concepts/03-concurrency-and-locks.md)
+  - [04. Async Rust & Futures](./concepts/04-async-rust-and-futures.md)
+  - [05. Concurrency Models: Threads vs Tasks](./concepts/05-concurrency-models-threads-vs-tasks.md)
+  - [06. Channels](./concepts/06-channels.md)
+  - [07. Traits & Generics](./concepts/07-traits-and-generics.md)
+  - [08. Macros](./concepts/08-macros.md)
+  - [09. Error Handling](./concepts/09-error-handling.md)
+  - [10. Collections & Iterators](./concepts/10-collections-and-iterators.md)
+  - [11. Memory & Unsafe](./concepts/11-memory-and-unsafe.md)
+  - [12. Performance](./concepts/12-performance.md)
+  - [13. Testing & Tooling](./concepts/13-testing-and-tooling.md)
+  - [14. Web / Backend-Specific](./concepts/14-web-backend-specific.md)
+- [🌐 Language Comparisons & FFI Guides](./ffi-and-comparisons/README.md)
+  - [C Interop & FFI Barriers](./ffi-and-comparisons/c-and-ffi/README.md)
+  - [C++ to Rust Systems Paradigms](./ffi-and-comparisons/cpp-to-rust/README.md)
+- [💻 Live Coding Workspaces](./live-coding/README.md)
+  - [Algorithms Workspace (`/live-coding/algorithms`)](./live-coding/algorithms/README.md)
+  - [Async Systems Workspace (`/live-coding/async-systems`)](./live-coding/async-systems/README.md)
+
+---
 
 ## 🏗️ Repository Structure
-The repository is divided into theoretical question banks and hands-on Cargo workspaces:
 
-- /concepts: Curated Markdown study guides covering everything from interior mutability to async task scheduling. Use these to structure mock interviews or test your verbal communication of technical tradeoffs.
+The repository is structured as a **Cargo Workspace** combining theoretical study guides with hands-on Rust crates:
 
-- /live-coding/algorithms: A dedicated crate for pure logic, algorithmic data structures (e.g., tries, prefix sum maps), and dynamic programming.
+- **/concepts**: Curated Markdown question bank covering 14 core topics. Use these to test yourself or structure technical interview screeners.
+- **/ffi-and-comparisons**: Deep dives into C interop, `extern "C"`, FFI boundaries, memory layouts (`#[repr(C)]`), and C++ vs Rust paradigm mappings.
+- **/live-coding/algorithms**: A dedicated crate for pure algorithmic data structures (e.g., $O(1)$ LRU Cache, Prefix Trie) with failing starter tests and reference solutions.
+- **/live-coding/async-systems**: A Tokio-powered crate focusing on concurrent patterns, rate limiters, channels, worker pools, and non-blocking state management.
 
-- /live-coding/async-systems: A tokio-based crate focusing on backend patterns, channel backpressure, and concurrent state management (e.g., thread-safe rate limiters and lock-free concurrency).
+---
 
-- /cpp-to-rust: Quick-reference guides mapping manual memory management and C++ idioms to safe Rust abstractions.
+## 🚀 Quick Start
 
-## 🚀 Getting Started
-The only way to truly learn Rust is to fight the compiler. The /live-coding directories are structured as isolated crates containing boilerplate setups and failing tests.
+The best way to prepare is by writing compilable code. The `/live-coding` directories are structured as crates containing starter implementations and unit tests.
 
-1. Clone the repository to your local machine.
+### 1. Test All Workspace Challenges
+From the repository root, run:
 
-2. Navigate to the specific workspace you want to practice (e.g., cd live-coding/algorithms).
+```bash
+# Run tests across all live coding crates
+cargo test --workspace
+```
 
-3. Run the test suite: cargo test
+### 2. Practice a Specific Challenge
+Navigate to a workspace crate:
 
-4. Write the implementation to make the compiler happy and ensure all tests pass.
+```bash
+cd live-coding/algorithms
+cargo test lru_cache
+```
+
+Failing tests will guide your implementation. If you get stuck or want to compare approach tradeoffs, idiomatic reference solutions are provided in `src/solutions/` inside each crate.
+
+---
 
 ## 🤝 Contributing
-This is a living repository designed to grow with the community. Pull requests are welcome to add new real-world interview questions, optimize existing solutions, or introduce new micro-benchmarks using Criterion. Please review CONTRIBUTING.md before submitting a PR.
 
-How does this framing look to you? If you are happy with the README, should we move on to scaffolding the root Cargo.toml workspace, or would you prefer to format the first set of conceptual questions?
+Contributions are welcome! Whether adding new real-world interview questions, creating additional live-coding challenges, or optimizing benchmarks, please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
-## License
-This project is dual-licensed under the MIT and Apache 2.0 licenses.
+---
+
+## 📄 License
+
+This project is dual-licensed under the [MIT License](./LICENSE-MIT) and [Apache 2.0 License](./LICENSE-APACHE).
